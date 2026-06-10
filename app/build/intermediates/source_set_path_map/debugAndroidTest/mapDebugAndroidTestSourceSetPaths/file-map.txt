@@ -1,0 +1,4 @@
+com.example.manorobotica.test.app-androidTest-0 C:\Users\Nhyix\Desktop\Escritorio\TECNM\Sistemas Programables\Mano lenguaje señas\AppMano\app\build\generated\res\resValues\androidTest\debug
+com.example.manorobotica.test.app-mergeDebugAndroidTestResources-1 C:\Users\Nhyix\Desktop\Escritorio\TECNM\Sistemas Programables\Mano lenguaje señas\AppMano\app\build\intermediates\incremental\debugAndroidTest\mergeDebugAndroidTestResources\merged.dir
+com.example.manorobotica.test.app-mergeDebugAndroidTestResources-2 C:\Users\Nhyix\Desktop\Escritorio\TECNM\Sistemas Programables\Mano lenguaje señas\AppMano\app\build\intermediates\incremental\debugAndroidTest\mergeDebugAndroidTestResources\stripped.dir
+com.example.manorobotica.test.app-debugAndroidTest-3 C:\Users\Nhyix\Desktop\Escritorio\TECNM\Sistemas Programables\Mano lenguaje señas\AppMano\app\build\intermediates\merged_res\debugAndroidTest\mergeDebugAndroidTestResources
