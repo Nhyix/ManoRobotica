@@ -151,46 +151,46 @@ fun ControlScreen(
     val gestures = remember {
         listOf(
             GestureItem("Mano Abierta", "Posición inicial / Relax", 0f, 0f, 0f, 0f, 0f),
-            GestureItem("Puño (Cerrado)", "Mano completamente cerrada", 180f, 180f, 180f, 180f, 180f),
-            GestureItem("Seña A (LSM)", "Puño cerrado, pulgar al lado", 0f, 180f, 180f, 180f, 180f),
-            GestureItem("Seña B (LSM)", "Mano plana, pulgar doblado", 180f, 0f, 0f, 0f, 0f),
-            GestureItem("Seña C (LSM)", "Forma de garra / C curvada", 90f, 90f, 90f, 90f, 90f),
-            GestureItem("Seña L (LSM)", "Letra L con índice y pulgar", 0f, 0f, 180f, 180f, 180f),
-            GestureItem("Seña V (Victoria)", "Símbolo de paz", 180f, 0f, 0f, 180f, 180f),
-            GestureItem("Te Amo (Love)", "Seña universal ILY", 0f, 0f, 180f, 180f, 0f),
-            GestureItem("Seña OK", "Pulgar e índice tocándose", 180f, 180f, 0f, 0f, 0f)
+            GestureItem("Puño (Cerrado)", "Mano completamente cerrada", 90f, 90f, 90f, 90f, 90f),
+            GestureItem("Seña A (LSM)", "Puño cerrado, pulgar al lado", 0f, 90f, 90f, 90f, 90f),
+            GestureItem("Seña B (LSM)", "Mano plana, pulgar doblado", 90f, 0f, 0f, 0f, 0f),
+            GestureItem("Seña C (LSM)", "Forma de garra / C curvada", 45f, 45f, 45f, 45f, 45f),
+            GestureItem("Seña L (LSM)", "Letra L con índice y pulgar", 0f, 0f, 90f, 90f, 90f),
+            GestureItem("Seña V (Victoria)", "Símbolo de paz", 90f, 0f, 0f, 90f, 90f),
+            GestureItem("Te Amo (Love)", "Seña universal ILY", 0f, 0f, 90f, 90f, 0f),
+            GestureItem("Seña OK", "Pulgar e índice tocándose", 90f, 90f, 0f, 0f, 0f)
         )
     }
 
     val alphabetSignAngles = remember {
         mapOf(
-            'a' to floatArrayOf(0f, 180f, 180f, 180f, 180f),    // Seña A: Puño cerrado, pulgar al lado
-            'b' to floatArrayOf(180f, 0f, 0f, 0f, 0f),          // Seña B: Mano plana extendida
-            'c' to floatArrayOf(90f, 90f, 90f, 90f, 90f),        // Seña C: Mano en forma de "C"
-            'd' to floatArrayOf(180f, 0f, 180f, 180f, 180f),    // Seña D: Solo índice levantado
-            'e' to floatArrayOf(140f, 140f, 140f, 140f, 140f),  // Seña E: Dedos semi-doblados hacia la palma
-            'f' to floatArrayOf(180f, 180f, 0f, 0f, 0f),        // Seña F: Índice y pulgar tocándose, otros extendidos
-            'g' to floatArrayOf(0f, 0f, 180f, 180f, 180f),      // Seña G: Índice y pulgar extendidos horizontalmente
-            'h' to floatArrayOf(180f, 0f, 0f, 180f, 180f),      // Seña H: Índice y medio extendidos lateralmente
-            'i' to floatArrayOf(180f, 180f, 180f, 180f, 0f),    // Seña I: Solo meñique levantado
-            'j' to floatArrayOf(180f, 180f, 180f, 180f, 30f),    // Seña J: Meñique levantado dibujando curva (30°)
-            'k' to floatArrayOf(90f, 0f, 0f, 180f, 180f),       // Seña K: Índice y medio levantados con pulgar en medio
-            'l' to floatArrayOf(0f, 0f, 180f, 180f, 180f),      // Seña L: Índice y pulgar formando una "L"
-            'm' to floatArrayOf(160f, 160f, 160f, 180f, 180f),  // Seña M: Tres dedos replegados sobre pulgar
-            'n' to floatArrayOf(160f, 160f, 180f, 180f, 180f),  // Seña N: Dos dedos replegados sobre pulgar
-            'ñ' to floatArrayOf(150f, 150f, 180f, 180f, 180f),  // Seña Ñ: Igual que N con inclinación/oscilación
-            'o' to floatArrayOf(130f, 130f, 130f, 130f, 130f),  // Seña O: Todos los dedos formando un círculo
-            'p' to floatArrayOf(90f, 0f, 90f, 180f, 180f),      // Seña P: Índice extendido, medio y pulgar en ángulo
-            'q' to floatArrayOf(90f, 90f, 180f, 180f, 180f),    // Seña Q: Garra hacia abajo con índice y pulgar
-            'r' to floatArrayOf(180f, 10f, 10f, 180f, 180f),    // Seña R: Índice y medio cruzados
-            's' to floatArrayOf(180f, 180f, 180f, 180f, 180f),  // Seña S: Puño cerrado con pulgar al frente
-            't' to floatArrayOf(180f, 120f, 180f, 180f, 180f),  // Seña T: Pulgar entre índice y medio doblado
-            'u' to floatArrayOf(180f, 0f, 0f, 180f, 180f),      // Seña U: Índice y medio levantados pegados
-            'v' to floatArrayOf(180f, 0f, 0f, 180f, 180f),      // Seña V: Índice y medio levantados separados
-            'w' to floatArrayOf(180f, 0f, 0f, 0f, 180f),        // Seña W: Índice, medio y anular extendidos
-            'x' to floatArrayOf(180f, 90f, 180f, 180f, 180f),    // Seña X: Índice encorvado en forma de gancho
-            'y' to floatArrayOf(0f, 180f, 180f, 180f, 0f),      // Seña Y: Pulgar y meñique extendidos (forma de fono)
-            'z' to floatArrayOf(180f, 0f, 180f, 180f, 180f)     // Seña Z: Índice levantado para trazar la letra
+            'a' to floatArrayOf(0f, 90f, 90f, 90f, 90f),         // Seña A: Puño cerrado, pulgar al lado
+            'b' to floatArrayOf(90f, 0f, 0f, 0f, 0f),           // Seña B: Mano plana extendida
+            'c' to floatArrayOf(45f, 45f, 45f, 45f, 45f),       // Seña C: Mano en forma de "C"
+            'd' to floatArrayOf(90f, 0f, 90f, 90f, 90f),        // Seña D: Solo índice levantado
+            'e' to floatArrayOf(70f, 70f, 70f, 70f, 70f),       // Seña E: Dedos semi-doblados hacia la palma
+            'f' to floatArrayOf(90f, 90f, 0f, 0f, 0f),          // Seña F: Índice y pulgar tocándose, otros extendidos
+            'g' to floatArrayOf(0f, 0f, 90f, 90f, 90f),         // Seña G: Índice y pulgar extendidos horizontalmente
+            'h' to floatArrayOf(90f, 0f, 0f, 90f, 90f),         // Seña H: Índice y medio extendidos lateralmente
+            'i' to floatArrayOf(90f, 90f, 90f, 90f, 0f),        // Seña I: Solo meñique levantado
+            'j' to floatArrayOf(90f, 90f, 90f, 90f, 15f),       // Seña J: Meñique levantado dibujando curva (15°)
+            'k' to floatArrayOf(45f, 0f, 0f, 90f, 90f),         // Seña K: Índice y medio levantados con pulgar en medio
+            'l' to floatArrayOf(0f, 0f, 90f, 90f, 90f),         // Seña L: Índice y pulgar formando una "L"
+            'm' to floatArrayOf(80f, 80f, 80f, 90f, 90f),       // Seña M: Tres dedos replegados sobre pulgar
+            'n' to floatArrayOf(80f, 80f, 90f, 90f, 90f),       // Seña N: Dos dedos replegados sobre pulgar
+            'ñ' to floatArrayOf(75f, 75f, 90f, 90f, 90f),       // Seña Ñ: Igual que N con inclinación/oscilación
+            'o' to floatArrayOf(65f, 65f, 65f, 65f, 65f),       // Seña O: Todos los dedos formando un círculo
+            'p' to floatArrayOf(45f, 0f, 45f, 90f, 90f),        // Seña P: Índice extendido, medio y pulgar en ángulo
+            'q' to floatArrayOf(45f, 45f, 90f, 90f, 90f),       // Seña Q: Garra hacia abajo con índice y pulgar
+            'r' to floatArrayOf(90f, 5f, 5f, 90f, 90f),         // Seña R: Índice y medio cruzados
+            's' to floatArrayOf(90f, 90f, 90f, 90f, 90f),       // Seña S: Puño cerrado con pulgar al frente
+            't' to floatArrayOf(90f, 60f, 90f, 90f, 90f),       // Seña T: Pulgar entre índice y medio doblado
+            'u' to floatArrayOf(90f, 0f, 0f, 90f, 90f),         // Seña U: Índice y medio levantados pegados
+            'v' to floatArrayOf(90f, 0f, 0f, 90f, 90f),         // Seña V: Índice y medio levantados separados
+            'w' to floatArrayOf(90f, 0f, 0f, 0f, 90f),          // Seña W: Índice, medio y anular extendidos
+            'x' to floatArrayOf(90f, 45f, 90f, 90f, 90f),       // Seña X: Índice encorvado en forma de gancho
+            'y' to floatArrayOf(0f, 90f, 90f, 90f, 0f),         // Seña Y: Pulgar y meñique extendidos (forma de fono)
+            'z' to floatArrayOf(90f, 0f, 90f, 90f, 90f)         // Seña Z: Índice levantado para trazar la letra
         )
     }
 
@@ -725,7 +725,7 @@ fun ControlScreen(
                                     onValChange(it)
                                     sendAngles(thumbVal, indexVal, middleVal, ringVal, pinkyVal)
                                 },
-                                valueRange = 0f..180f,
+                                valueRange = 0f..90f,
                                 colors = SliderDefaults.colors(
                                     thumbColor = if (idx == 0) NeonCyan else NeonPurple,
                                     activeTrackColor = if (idx == 0) NeonCyan.copy(alpha = 0.8f) else NeonPurple.copy(alpha = 0.8f),

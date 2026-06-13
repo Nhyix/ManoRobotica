@@ -6,7 +6,7 @@ import kotlin.math.*
 
 object HandLandmarkProcessor {
 
-    private fun Float.coerceAngle(): Float = coerceIn(0f, 180f)
+    private fun Float.coerceAngle(): Float = coerceIn(0f, 90f)
 
     fun computeAngles(result: HandLandmarkerResult): FloatArray? {
         if (result.landmarks().isEmpty()) return null
@@ -20,7 +20,7 @@ object HandLandmarkProcessor {
         val thumbClose = thumbCloseBonus(x(4), y(4), x(5), y(5), x(2), y(2))
 
         return floatArrayOf(
-            ((180f - thumbDir) + thumbClose).coerceAngle(),
+            ((90f - thumbDir) + thumbClose).coerceAngle(),
             fingerCurl(x(5), y(5), x(6), y(6), x(7), y(7)),
             fingerCurl(x(9), y(9), x(10), y(10), x(11), y(11)),
             fingerCurl(x(13), y(13), x(14), y(14), x(15), y(15)),
@@ -44,7 +44,7 @@ object HandLandmarkProcessor {
     }
 
     private fun fingerCurl(mcpX: Float, mcpY: Float, pipX: Float, pipY: Float, dipX: Float, dipY: Float): Float {
-        return (180f - angleAt(mcpX, mcpY, pipX, pipY, dipX, dipY)).coerceAngle()
+        return (90f - angleAt(mcpX, mcpY, pipX, pipY, dipX, dipY)).coerceAngle()
     }
 
     private fun thumbCloseBonus(tipX: Float, tipY: Float, idxMcpX: Float, idxMcpY: Float, thumbMcpX: Float, thumbMcpY: Float): Float {

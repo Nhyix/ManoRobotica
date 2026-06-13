@@ -98,21 +98,55 @@ else:
 print("Direccion IP: http://{}/".format(ip))
 
 # --- INICIALIZACION DE CAMARA ---
-try:
-    camera.init(0, format=camera.JPEG, fb_location=camera.PSRAM)
-    # Resoluciones disponibles: FRAME_QQVGA, FRAME_QVGA, FRAME_VGA (640x480),
-    #                           FRAME_SVGA (800x600), FRAME_HD (1280x720)
-    camera.framesize(camera.FRAME_VGA)
-    # Calidad de compresion JPEG: 0 (mejor) a 63 (peor)
-    camera.quality(10)
-    camera.speffect(camera.EFFECT_NONE)
-    # Invertir espejo/rotacion si es necesario:
-    # camera.flip(1)   # Voltear vertical
-    # camera.mirror(1) # Voltear horizontal
-    print("Camara inicializada (VGA, calidad 10)")
-except Exception as e:
-    print("ERROR al inicializar camara:", e)
-    raise
+def init_camera():
+    time.sleep(0.5)
+    for intento in range(3):
+        try:
+            # Algunos firmwares necesitan XCLK explicito
+            try:
+                cam = camera.init(0, format=camera.JPEG, fb_location=camera.PSRAM, xclk_freq=20000000)
+            except:
+                cam = None
+            if not cam:
+                try:
+                    cam = camera.init(0, format=camera.JPEG, fb_location=camera.PSRAM)
+                except:
+                    cam = None
+            if not cam:
+                try:
+                    cam = camera.init(0, format=camera.JPEG)
+                except:
+                    cam = None
+            if cam:
+                # Resoluciones: FRAME_QQVGA, FRAME_QVGA, FRAME_VGA (640x480),
+                #              FRAME_SVGA (800x600), FRAME_HD (1280x720)
+                try:
+                    camera.framesize(camera.FRAME_VGA)
+                    camera.quality(10)
+                    camera.speffect(camera.EFFECT_NONE)
+                except:
+                    pass
+                print("Camara inicializada (VGA, calidad 10)")
+                return True
+            else:
+                print("Intento {} fallo, reintentando...".format(intento + 1))
+                time.sleep(1)
+        except Exception as e:
+            print("Intento {} error: {}".format(intento + 1, e))
+            time.sleep(1)
+    return False
+
+camara_ok = init_camera()
+if not camara_ok:
+    print("""
+ERROR: No se pudo inicializar la camara.
+Posibles causas:
+  1. Cable de la camara suelto o mal conectado
+  2. Alimentacion insuficiente (usa 5V / 1A minimo)
+  3. PSRAM defectuosa o mal soldada
+  4. Firmware MicroPython incompatible con esta placa
+El servidor HTTP y control de servos seguira funcionando sin video.
+    """)
 
 # --- SERVIDOR HTTP ---
 BOUNDARY = "frame_boundary"
@@ -209,6 +243,9 @@ def maneja_cliente(client):
             try:
                 client.sendall(resp)
                 while True:
+                    if not camara_ok:
+                        time.sleep_ms(100)
+                        continue
                     frame = camera.capture()
                     if frame is None:
                         time.sleep_ms(10)

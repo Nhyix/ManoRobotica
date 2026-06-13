@@ -51,7 +51,6 @@
         android:label="Control Mano Robótica"
         android:roundIcon="@android:drawable/sym_def_app_icon"
         android:supportsRtl="true"
-        android:testOnly="true"
         android:theme="@android:style/Theme.Material.NoActionBar" >
         <activity
             android:name="com.example.manorobotica.MainActivity"

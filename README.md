@@ -2,6 +2,12 @@
 
 Control de mano robótica mediante reconocimiento de lenguaje de señas, control por voz y gestos capturados por cámara.
 
+# Integrantes del Proyecto:
+
+•	García Rodríguez Héctor Mauricio (Control: 22240332)
+•	Bernal Tolentino Raziel (Control: 22240232)
+•	Zamora Martínez Kimberly Paola del Rocío (Control: 22240276)
+
 ## Arquitectura del Sistema
 
 ```

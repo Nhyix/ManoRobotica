@@ -123,7 +123,7 @@ fun HandVisualizer(
             for (i in knuckles.indices) {
                 val knuckle = knuckles[i]
                 val baseDir = baseDirections[i]
-                val anglePercent = fingerAngles[i] / 180f // 0.0 (abierto) a 1.0 (cerrado)
+                val anglePercent = fingerAngles[i] / 90f // 0.0 (abierto) a 1.0 (cerrado)
                 val segments = fingerSegmentLengths[i]
 
                 var currentPoint = knuckle
